@@ -1,3 +1,11 @@
+#!/bin/bash
+
+if [ "$1" == "--help" ]; then
+  echo "Usage: $0 <directory> <command>"
+  echo "Monitors a directory for changes and executes a command when changes are detected."
+  exit 0
+fi
+
 DIR_TO_WATCH=${1}
 COMMAND=${2}
  
