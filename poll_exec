@@ -47,6 +47,10 @@ fi
 trap "echo Exited!; exit;" SIGINT SIGTERM
 while : 
 do
-  watch --chgexit -n 1 "ls -ltr --recursive --full-time ${DIR_TO_WATCH} | sha256sum" && ${COMMAND}
+  # Capture and display the output of the command
+  output=$(eval "${COMMAND}")
+  echo "${output}"
+  
+  watch --chgexit -n 1 "ls -ltr --recursive --full-time ${DIR_TO_WATCH} | sha256sum" >/dev/null 2>&1 && continue || break
   sleep 1
 done
