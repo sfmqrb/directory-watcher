@@ -38,7 +38,7 @@ Options:
 Watch the current directory and run `make` command on any change:
 
 ```bash
-$ ./poll_exec -c make
+$ poll_exec -c make
 ```
 
 
