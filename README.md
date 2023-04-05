@@ -13,7 +13,7 @@ $ git clone https://github.com/sfmqrb/directory-watcher.git
 $ cd directory-watcher
 ```
 
-2. Run the `install.sh` script to install the `poll_exec.sh` script:
+2. Run the `install.sh` script to install the `poll_exec` script:
 
 ```bash
 $ bash install.sh
@@ -38,7 +38,7 @@ Options:
 Watch the current directory and run `make` command on any change:
 
 ```bash
-$ ./poll_exec.sh -c make
+$ ./poll_exec -c make
 ```
 
 
