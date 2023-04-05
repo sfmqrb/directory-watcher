@@ -1,14 +1,49 @@
 #!/bin/bash
 
-if [ "$1" == "--help" ]; then
-  echo "Usage: $0 <directory> <command>"
-  echo "Monitors a directory for changes and executes a command when changes are detected."
-  exit 0
+# Default directory to watch is the current directory
+DIR_TO_WATCH=${PWD}
+
+# Parse command-line arguments
+while [[ $# -gt 0 ]]
+do
+key="$1"
+
+case $key in
+    -d|--directory)
+    DIR_TO_WATCH="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    -c|--command)
+    COMMAND="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    --help)
+    echo "Usage: $0 [options]"
+    echo "Monitors a directory for changes and executes a command when changes are detected."
+    echo ""
+    echo "Options:"
+    echo "  -d, --directory <directory>  Directory to watch (default: current directory)"
+    echo "  -c, --command <command>      Command to execute when changes are detected (required)"
+    echo "  --help                       Show this help message and exit"
+    exit 0
+    ;;
+    *)    # unknown option
+    echo "Unknown option: $1"
+    echo "Use --help to see available options."
+    exit 1
+    ;;
+esac
+done
+
+# Check if the command argument was provided
+if [ -z "${COMMAND}" ]; then
+    echo "Error: command argument is required."
+    echo "Use --help to see available options."
+    exit 1
 fi
 
-DIR_TO_WATCH=${1}
-COMMAND=${2}
- 
 trap "echo Exited!; exit;" SIGINT SIGTERM
 while : 
 do
