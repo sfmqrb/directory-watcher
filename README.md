@@ -3,6 +3,25 @@
 
 A Bash script that monitors a directory for changes and executes a command when changes are detected.
 
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+$ git clone https://github.com/sfmqrb/directory-watcher.git
+$ cd directory-watcher
+```
+
+2. Run the `install.sh` script to install the `poll_exec.sh` script:
+
+```bash
+$ bash install.sh
+```
+This will copy the `poll_exec` script to `$HOME/.local/bin` directory, which should be in your `PATH`.
+
+3. You can now use the `poll_exec` script from anywhere in the terminal.
+
 ## Usage
 
 $ poll_exec [options]
@@ -18,16 +37,19 @@ Options:
 
 Watch the current directory and run `make` command on any change:
 
+```bash
 $ ./poll_exec.sh -c make
+```
 
 
 Watch a specific directory and run `python script.py` command on any change:
 
+```bash
 $ poll_exec -d /path/to/directory -c "python script.py"
-
+```
 
 ## License
 
-This script is licensed under the [MIT License](LICENSE).
+This script is licensed under the [MIT License](https://opensource.org/license/mit/).
 
 ---
